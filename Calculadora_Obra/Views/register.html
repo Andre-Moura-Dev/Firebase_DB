@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="card">
+        <h2>Registro</h2>
+        <form id="registerform">
+            <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" required minlength="6">
+            </div>
+            <button type="submit" class="btn">Registrar</button>
+        </form>
+        <p>Já tem uma conta? <a href="#" onclick="navigateTo('/login')">Faça login</a></p>
+    </div>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', async (e) => {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const userCredential = await auth.createUserWidthEmailAndPassword(email, password);
+
+                await database.ref('users/' + userCredential.user.uid).set({
+                    name: name,
+                    email: email,
+                    createAdt: new Date().toISOString(),
+                    role: 'user'
+                });
+
+                navigateTo('/dashboard');
+            } catch (error) {
+                alert('Erro no registro: ' + error.message)
+            }
+        });
+    </script>
+</body>
+</html>

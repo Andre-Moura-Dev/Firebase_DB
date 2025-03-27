@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário Calculadora</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">Calculadora de Custo de Obra</div>
+            <div class="navbar-menu">
+                <a href="#" class="navbar-item" onclick="navigateTo('/dashboard')">Dashboard</a>
+                <a href="#" class="navbar-item" onclick="auth.signOut()">Sair</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Novo Cálculo de Custo</h2>
+
+        <form id="calculationForm">
+            <div class="form-group">
+                <label for="projectName">Nome do Projeto:</label>
+                <input type="text" id="projectName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="projectType">Tipo de Obra:</label>
+                <select id="projectType" required>
+                    <option value="">Selecione um tipo:</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="totalArea">Área Total (m²):</label>
+                <input type="number" id="totalArea" step="0.01" min="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="materialCost">Custo Total dos Materiais (R$):</label>
+                <input type="number" id="materialCost" step="0.01" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="laborCost">Custo Total da Mão de Obra (R$):</label>
+                <input type="number" id="laborCost" step="0.01" min="0" required>
+            </div>
+
+            <button type="submit" class="btn btn-accent">Calcular e Gravar</button>
+        </form>
+
+        <div id="resultContainer" class="hidden" style="margin-top: 20px;">
+            <h3>Resultado:</h3>
+            <p>Custo por metro quadrado: <strong>R$ <span id="costResult">0.00</span></strong></p>
+        </div>
+    </div>
+</body>
+</html>

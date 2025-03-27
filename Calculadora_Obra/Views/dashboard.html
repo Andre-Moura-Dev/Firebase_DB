@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">Calculadora de Custo de Obra</div>
+            <div class="navbar-menu">
+                <a href="#" class="navbar-item" onclick="navigateTo('/dashboard')">Dashboard</a>
+                <a href="#" class="navbar-item" onclick="navigateTo('/new-calculation')">Novo Cálculo</a>
+                <a href="#" class="navbar-item" onclick="auth.signOut()">Sair</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Meus Projetos</h2>
+        <button id="newCalculationBtn" class="btn">Novo Cálculo</button>
+
+        <table id="projectsTable" class="table">
+            <thead>
+                <tr>
+                    <th>Nome do Projeto</th>
+                    <th>Tipo</th>
+                    <th>Área total</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
