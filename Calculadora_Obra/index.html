@@ -3,19 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Obras</title>
+    <title>Calculadora Obras</title>
+
+    <!-- Estilizações-->
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+
+    <!--Firebase SDK-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 </head>
 <body>
-    
-    <div id="app-container">
-        <div id="loading">Carregando Aplicação...</div>
+    <div class="container">
+        <h1>Cálculo de Custo por Metro Quadrado</h1>
+        <form id="calcForm">
+            <div class="form-group">
+                <label for="areaTotal">Área Total da Obra (m²):</label>
+                <input type="number" id="areaTotal" step="0.01" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="custoMateriais">Custo Total dos Materiais (R$):</label>
+                <input type="number" id="custoMateriais" step="0.01" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="custoMaoDeObra">Custo Total da Mão de Obra (R$):</label>
+                <input type="number" id="custoMaoDeObra" step="0.01" min="0" required>
+            </div>
+
+            <button type="submit">Calcular Metro Quadrado</button>
+        </form>
+
+        <div id="resultado" class="hidden">
+            <h2>Resultado:</h2>
+            <p>O custo por metro quadrado é: <span id="custoPorMetro"></span></p>
+        </div>
+
+        <div id="historico" class="hidden">
+            <h2>Histórico de Cálculos</h2>
+            <ul id="listaHistorico"></ul>
+        </div>
     </div>
-    
-    <!--SDK Firebase-->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script type="module" src="app.js"></script>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
