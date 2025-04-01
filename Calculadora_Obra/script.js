@@ -38,13 +38,15 @@ calcForm.addEventListener('submit', function(e) {
     
     // Calcula o custo por metro quadrado
     const custoPorMetroQuadrado = (custoMateriais + custoMaoDeObra) / areaTotal;
+
+    const dataCalculo = new Date().getTime(); // Correção
     
     // Exibe o resultado
     custoPorMetroSpan.textContent = `R$ ${custoPorMetroQuadrado.toFixed(2)}`;
     resultadoDiv.classList.remove('hidden');
     
     // Salva no Firebase
-    salvarCalculo(areaTotal, custoMateriais, custoMaoDeObra, custoPorMetroQuadrado);
+    salvarCalculo(areaTotal, custoMateriais, custoMaoDeObra, custoPorMetroQuadrado, dataCalculo);
 });
 
 async function salvarCalculo(areaTotal, custoMateriais, custoMaoDeObra, custoPorMetroQuadrado, dataCalculo) {
@@ -62,7 +64,7 @@ async function salvarCalculo(areaTotal, custoMateriais, custoMaoDeObra, custoPor
     })
     .catch((error) => {
         console.log('Erro ao salvar Cálculo: ', error);
-    })  
+    });
 }
 
 async function carregarHistorico() {
